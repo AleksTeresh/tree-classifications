@@ -1,0 +1,212 @@
+[
+  {
+    "constraint": [],
+    "upper-bound": "unsolvable",
+    "lower-bound": "unsolvable",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "121"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "122"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "222"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "112"],
+    "upper-bound": "O(log n) perhaps ???",
+    "lower-bound": "Ω(log n) using Round Ellimination",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["112", "122"],
+    "upper-bound": "O(1)",
+    "lower-bound": "",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "212"],
+    "upper-bound": "Θ(n)",
+    "lower-bound": "Θ(n)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "111", "112"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "112", "122"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "112", "222"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "111", "212"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "212", "122"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "212", "222"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "121", "122"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "112", "212"],
+    "upper-bound": "",
+    "lower-bound": "",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["112", "212", "122"],
+    "upper-bound": "O(1)",
+    "lower-bound": "",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "111", "112", "212"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "112", "212", "122"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "112", "212", "222"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "111", "112", "122"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "111", "112", "222"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["111", "112", "222", "122"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "111", "212", "122"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "111", "212", "222"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["121", "112", "212", "122"],
+    "upper-bound": "O(1)",
+    "lower-bound": "",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["112", "122", "111", "212", "121"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["112", "222", "111", "212", "121"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["222", "122", "111", "212", "112"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  },
+  {
+    "constraint": ["112", "222", "122", "111", "212", "121"],
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
+    "unsolvable-count": "",
+    "solvable-count": ""
+  }
+]
