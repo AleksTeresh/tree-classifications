@@ -1,6 +1,9 @@
 import itertools
 import json
 
+UNSOLVABLE = "unsolvable"
+CONSTANT = "Θ(1)"
+
 constraints = [
   "111",
   "112",
@@ -28,9 +31,9 @@ def pruneSet(constrSet):
 
 def constraintToProblem(constrSet):
   if len(constrSet) == 0:
-    complexity = "unsolvable"
+    complexity = UNSOLVABLE
   elif "111" in constrSet or "222" in constrSet:
-    complexity = "Θ(1)"
+    complexity = CONSTANT
   else:
     complexity = ""
 
@@ -43,7 +46,7 @@ def constraintToProblem(constrSet):
   }
 
 def generate():
-  allProblems = []
+  allSets = []
   for L in range(0, len(constraints)+1):
     combinations = itertools.combinations(constraints, L)
     combinations = list(map(lambda x: set(x), combinations))
@@ -51,12 +54,17 @@ def generate():
     for subset in combinations:
       prunedSubset = pruneSet(subset)
       ismr = getIsomorphism(prunedSubset)
-      if not prunedSubset in allProblems and not ismr in allProblems:
-        allProblems.append(prunedSubset)
+      if not prunedSubset in allSets and not ismr in allSets:
+        allSets.append(prunedSubset)
+
+  allProblems = [constraintToProblem(s) for s in allSets]
 
   print("In total: %s problems" % len(allProblems))
-
+  print("Solvable in constant time: %s" % len([x for x in allProblems if x["upper-bound"] == CONSTANT]))
+  print("Unsolvable: %s" % len([x for x in allProblems if x["upper-bound"] == UNSOLVABLE]))
+  print("TBD: %s" % len([x for x in allProblems if x["upper-bound"] == ""]))
+  
   with open('./problems/2labels-temp.json', 'w', encoding='utf-8') as f:
-    json.dump([constraintToProblem(s) for s in allProblems], f, ensure_ascii=False, indent=4)
+    json.dump(allProblems, f, ensure_ascii=False, indent=4)
 
 generate()
