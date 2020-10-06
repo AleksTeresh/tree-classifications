@@ -51,11 +51,11 @@ def generate():
     combinations = itertools.combinations(constraints, L)
     combinations = list(map(lambda x: set(x), combinations))
 
-    for subset in combinations:
-      prunedSubset = pruneSet(subset)
-      ismr = getIsomorphism(prunedSubset)
-      if not prunedSubset in allSets and not ismr in allSets:
-        allSets.append(prunedSubset)
+    for constraintSet in combinations:
+      prunedConstraintSet = pruneSet(constraintSet)
+      ismr = getIsomorphism(prunedConstraintSet)
+      if not prunedConstraintSet in allSets and not ismr in allSets:
+        allSets.append(prunedConstraintSet)
 
   allProblems = [constraintToProblem(s) for s in allSets]
 
