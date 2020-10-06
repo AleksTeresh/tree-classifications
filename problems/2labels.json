@@ -36,8 +36,8 @@
   },
   {
     "constraint": ["121", "112"],
-    "upper-bound": "O(log n) perhaps ???",
-    "lower-bound": "Ω(log n) using Round Ellimination",
+    "upper-bound": "O(log n)",
+    "lower-bound": "Ω(log n)",
     "unsolvable-count": "",
     "solvable-count": ""
   },
