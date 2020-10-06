@@ -36,3 +36,10 @@ Most of the problems were rather trivial to classify. Lower and upper bound just
 
 ## Scripts
 
+Running the following command:
+
+```
+python ./problems.py
+```
+
+will generate `problems/2labels-temp.json` that contains all non-isomorphic, non-redundant problems. Moreover, it will classify some of those problems that can be automatically classified.
