@@ -1,6 +1,6 @@
 # Tree classifications
 
-This repository contains classifications of some of the problems on rooted trees.
+This repository contains classifications of some of the problems on rooted binary trees.
 
 ## Notation
 
