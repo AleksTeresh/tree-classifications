@@ -1,17 +1,9 @@
+import sys
 import itertools
 import json
 
 UNSOLVABLE = "unsolvable"
 CONSTANT = "Θ(1)"
-
-constraints = [
-  "111",
-  "112",
-  "212",
-  "121",
-  "122",
-  "222"
-]
 
 def getCanonical(constr):
   return min(constr, constr[::-1])
@@ -45,7 +37,15 @@ def constraintToProblem(constrSet):
     "solvable-count": ""
   }
 
+def getConstraints(colorCount):
+  colorPalete = [str(x) for x in list(range(1, colorCount + 1))]
+  prod = list(itertools.product(colorPalete, repeat=3))
+  return [getCanonical("".join(list(x))) for i, x in enumerate(prod) if not getCanonical(x) in prod[:i]]
+
 def generate():
+  colorCount = int(sys.argv[1])
+  constraints = getConstraints(colorCount)
+
   allSets = []
   for L in range(0, len(constraints)+1):
     combinations = itertools.combinations(constraints, L)
@@ -67,4 +67,5 @@ def generate():
   with open('./problems/2labels-temp.json', 'w', encoding='utf-8') as f:
     json.dump(allProblems, f, ensure_ascii=False, indent=4)
 
-generate()
+if __name__ == "__main__":
+   generate()
