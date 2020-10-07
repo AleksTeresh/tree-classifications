@@ -26,7 +26,7 @@ There are:
 
 - 1 linear-time solvable
 
-- 1 unsolvable, which is [] i.e. emoty set of allowed configurations
+- 1 unsolvable, which is {} i.e. empty set of allowed configurations
 
 - **1 unclassified (!)** The only unclassified problem is {121, 112, 212}.
 
