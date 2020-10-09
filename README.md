@@ -38,6 +38,16 @@ Most of the problems were rather trivial to classify. Lower and upper bound just
 
 {112, 122} is O(1)-time solvable: each node simply tells one of its children "you will be 1" and the other one "you will be 2". Since {112, 122} is O(1)-time solvable then any problems that are relaxations of it are O(1)-time solvable too. Thus, {112, 212, 122} and {121, 112, 212, 122} were classified as O(1) solvable too.
 
+### 3 labels
+
+In total: 42198 problems
+
+Solvable in constant time: 39538
+
+Unsolvable: 1
+
+TBD: 2659
+
 ## Scripts
 
 Running the following command:
