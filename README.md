@@ -53,7 +53,7 @@ TBD: 2659
 Running the following command:
 
 ```
-python ./problems.py
+python ./problems.py <label-count>
 ```
 
-will generate `problems/2labels-temp.json` that contains all non-isomorphic, non-redundant problems. Moreover, it will classify some of those problems that can be automatically classified.
+where "label-count" is 2 or 3 will generate `problems/problems-temp.json` that contains all non-isomorphic, non-redundant problems. Moreover, it will classify some of those problems that can be automatically classified.
