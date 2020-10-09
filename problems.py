@@ -8,24 +8,68 @@ CONSTANT = "Θ(1)"
 def getCanonical(constr):
   return min(constr, constr[::-1])
 
-def getIsomorphism(constrSet):
-  isomorphise = lambda y: '2' if y == '1' else '1'
-  canonize = lambda x: getCanonical("".join(list(map(isomorphise, x))))
-  return set(map(canonize, constrSet))
+def isomorphise1(y):
+  if y == '1':
+    return '2'
+  elif y == '2':
+    return '1'
+  else:
+    return y
+def isomorphise2(y):
+  if y == '1':
+    return '3'
+  elif y == '3':
+    return '1'
+  else:
+    return y
+def isomorphise3(y):
+  if y == '2':
+    return '3'
+  elif y == '3':
+    return '2'
+  else:
+    return y
+def isomorphise4(y):
+  if y == '1':
+    return '2'
+  elif y == '2':
+    return '3'
+  else:
+    return '1'
+def isomorphise5(y):
+  if y == '1':
+    return '3'
+  elif y == '3':
+    return '2'
+  else:
+    return '1'
+
+def canonize(isomorphize):
+  return lambda x: getCanonical("".join(list(map(isomorphize, x))))
+
+def getIsomorphism(constrSet, colorCount):
+  if colorCount == 2:
+    return [constrSet, set(map(canonize(isomorphise1), constrSet))]
+  elif colorCount == 3:
+    return [
+      constrSet,
+      set(map(canonize(isomorphise1), constrSet)),
+      set(map(canonize(isomorphise2), constrSet)),
+      set(map(canonize(isomorphise3), constrSet)),
+      set(map(canonize(isomorphise4), constrSet)),
+      set(map(canonize(isomorphise5), constrSet)),
+    ]
+
 
 def pruneSet(constrSet):
   parentLabelSet = set(map(lambda x: x[1], constrSet))
-  if len(parentLabelSet) == 1:
-    allowedLabel = list(parentLabelSet)[0]
-    return set(filter(lambda x: x == len(x) * allowedLabel[0], constrSet))
-  else:
-    return constrSet
+  return set(filter(lambda x: set(x) <= parentLabelSet, constrSet))
 
 def constraintToProblem(constrSet):
-  if len(constrSet) == 0:
-    complexity = UNSOLVABLE
-  elif "111" in constrSet or "222" in constrSet:
+  if "111" in constrSet or "222" in constrSet or "333" in constrSet or ("112" in constrSet and "122" in constrSet):
     complexity = CONSTANT
+  elif len(constrSet) == 0:
+    complexity = UNSOLVABLE
   else:
     complexity = ""
 
@@ -48,13 +92,18 @@ def generate():
 
   allSets = []
   for L in range(0, len(constraints)+1):
+  # for L in range(0, 3):
     combinations = itertools.combinations(constraints, L)
     combinations = list(map(lambda x: set(x), combinations))
+    print(L)
 
     for constraintSet in combinations:
-      prunedConstraintSet = pruneSet(constraintSet)
-      ismr = getIsomorphism(prunedConstraintSet)
-      if not prunedConstraintSet in allSets and not ismr in allSets:
+      prunedConstraintSet = constraintSet
+      for _ in range(colorCount-1):
+        prunedConstraintSet = pruneSet(prunedConstraintSet)
+      print(constraintSet, prunedConstraintSet)
+      ismrs = getIsomorphism(prunedConstraintSet, colorCount)
+      if len([1 for ismr in ismrs if ismr in allSets]) == 0:
         allSets.append(prunedConstraintSet)
 
   allProblems = [constraintToProblem(s) for s in allSets]
@@ -64,7 +113,7 @@ def generate():
   print("Unsolvable: %s" % len([x for x in allProblems if x["upper-bound"] == UNSOLVABLE]))
   print("TBD: %s" % len([x for x in allProblems if x["upper-bound"] == ""]))
   
-  with open('./problems/2labels-temp.json', 'w', encoding='utf-8') as f:
+  with open('./problems/problems-temp.json', 'w', encoding='utf-8') as f:
     json.dump(allProblems, f, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
