@@ -1,12 +1,10 @@
 import sys
 import itertools
 import json
+from util import getCanonical
 
 UNSOLVABLE = "unsolvable"
 CONSTANT = "Θ(1)"
-
-def getCanonical(constr):
-  return min(constr, constr[::-1])
 
 def isomorphise1(y):
   if y == '1':
@@ -114,7 +112,7 @@ def generate():
   print("TBD: %s" % len([x for x in allProblems if x["upper-bound"] == ""]))
   
   with open('./problems/problems-temp.json', 'w', encoding='utf-8') as f:
-    json.dump(allProblems, f, ensure_ascii=False, indent=4)
+    json.dump(allProblems, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
    generate()
