@@ -63,7 +63,7 @@ def pruneSet(constrSet):
   parentLabelSet = set(map(lambda x: x[1], constrSet))
   return set(filter(lambda x: set(x) <= parentLabelSet, constrSet))
 
-def constraintToProblem(constrSet):
+def constraintToProblem(constrSet, idx):
   if "111" in constrSet or "222" in constrSet or "333" in constrSet or ("112" in constrSet and "122" in constrSet):
     complexity = CONSTANT
   elif len(constrSet) == 0:
@@ -76,7 +76,8 @@ def constraintToProblem(constrSet):
     "upper-bound": complexity,
     "lower-bound": complexity,
     "unsolvable-count": "",
-    "solvable-count": ""
+    "solvable-count": "",
+    "id": idx
   }
 
 def getConstraints(colorCount):
@@ -104,7 +105,7 @@ def generate():
       if len([1 for ismr in ismrs if ismr in allSets]) == 0:
         allSets.append(prunedConstraintSet)
 
-  allProblems = [constraintToProblem(s) for s in allSets]
+  allProblems = [constraintToProblem(s, i) for i, s in enumerate(allSets)]
 
   print("In total: %s problems" % len(allProblems))
   print("Solvable in constant time: %s" % len([x for x in allProblems if x["upper-bound"] == CONSTANT]))
