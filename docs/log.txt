@@ -1,4 +1,4 @@
-New lower bounds 13.10.2020
+New lower bounds 13.10.2020. Found a sa result of running postprocess.py
 
 ['112', '121', '233'] Ω(log n)
 ['112', '123', '132'] Ω(log n)
@@ -49,3 +49,11 @@ From above, the following upper bounds follow:
 ['121', '123', '212', '232'] Θ(n)
 ['121', '131', '212', '313'] Θ(n)
 ['121', '123', '212', '232', '323'] Θ(n)
+
+New lower and upper bounds 14.10.2020. Found via cyclepath classifier command-line tool:
+
+['121', '232', '313'] Θ(n)
+['121', '123', '131', '212', '323'] Θ(log* n)
+['121', '123', '131', '313', '323'] Θ(n)
+['121', '123', '131', '132', '212', '232', '323'] Θ(log* n)
+['121', '123', '131', '132', '212', '213', '232', '313', '323'] Θ(log* n)
