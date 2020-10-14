@@ -2,7 +2,7 @@ import sys
 import json
 from util import getCanonical
 
-def postprocess():
+def postprocessLowerBounds():
   filePath = sys.argv[1]
   with open(filePath) as json_file:
     ctr = 0
@@ -35,4 +35,4 @@ def postprocess():
 
 
 if __name__ == "__main__":
-   postprocess()
+   postprocessLowerBounds()
