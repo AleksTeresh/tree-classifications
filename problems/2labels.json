@@ -43,8 +43,8 @@
   },
   {
     "constraint": ["112", "122"],
-    "upper-bound": "O(1)",
-    "lower-bound": "",
+    "upper-bound": "Θ(1)",
+    "lower-bound": "Θ(1)",
     "unsolvable-count": "",
     "solvable-count": ""
   },
@@ -106,15 +106,15 @@
   },
   {
     "constraint": ["121", "112", "212"],
-    "upper-bound": "",
-    "lower-bound": "",
+    "upper-bound": "Θ(log n)",
+    "lower-bound": "Θ(log n)",
     "unsolvable-count": "",
     "solvable-count": ""
   },
   {
     "constraint": ["112", "212", "122"],
     "upper-bound": "O(1)",
-    "lower-bound": "",
+    "lower-bound": "Θ(1)",
     "unsolvable-count": "",
     "solvable-count": ""
   },
@@ -177,7 +177,7 @@
   {
     "constraint": ["121", "112", "212", "122"],
     "upper-bound": "O(1)",
-    "lower-bound": "",
+    "lower-bound": "Θ(1)",
     "unsolvable-count": "",
     "solvable-count": ""
   },
