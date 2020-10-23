@@ -10,6 +10,10 @@ def getStatistics():
     upperBoundConstant = 0
     constSolvable = 0
 
+    lowerBoundLogStar = 0
+    upperBoundLogStar = 0
+    logStarSolvable = 0
+
     lowerBoundLog = 0
     upperBoundLog = 0
     logSolvable = 0
@@ -30,6 +34,13 @@ def getStatistics():
         upperBoundConstant += 1
       if "1" in lowerBound and "1" in upperBound:
         constSolvable += 1
+
+      if "log*" in lowerBound:
+        lowerBoundLogStar += 1
+      if "log*" in upperBound:
+        upperBoundLogStar += 1
+      if "log*" in lowerBound and "log*" in upperBound:
+        logStarSolvable += 1
 
       if "log n" in lowerBound:
         lowerBoundLog += 1
@@ -52,24 +63,27 @@ def getStatistics():
 
     print("In total: %s problems" % totalSize)
     print("Solvable in constant time: %s " % constSolvable)
+    print("Solvable in log* time: %s " % logStarSolvable)
     print("Solvable in log time: %s " % logSolvable)
     print("Solvable in linear time: %s " % linearSolvable)
     print("Unsolvable: %s" % unsolvable)
-    print("TBD: %s" % (totalSize - unsolvable - constSolvable - logSolvable - linearSolvable))
+    print("TBD: %s" % (totalSize - unsolvable - constSolvable - logStarSolvable - logSolvable - linearSolvable))
     print()
 
     print("Lower bounds")
     print("Constant time: %s " % lowerBoundConstant)
+    print("Log* time: %s " % lowerBoundLogStar)
     print("Log time: %s " % lowerBoundLog)
     print("Linear time: %s " % lowerBoundLinear)
-    print("TBD: %s" % (totalSize - unsolvable - lowerBoundConstant - lowerBoundLog - lowerBoundLinear))
+    print("TBD: %s" % (totalSize - unsolvable - lowerBoundConstant - lowerBoundLogStar - lowerBoundLog - lowerBoundLinear))
     print()
 
     print("Upper bounds")
     print("Constant time: %s " % upperBoundConstant)
+    print("Log* time: %s " % upperBoundLogStar)
     print("Log time: %s " % upperBoundLog)
     print("Linear time: %s " % upperBoundLinear)
-    print("TBD: %s" % (totalSize - unsolvable - upperBoundConstant - upperBoundLog - upperBoundLinear))
+    print("TBD: %s" % (totalSize - unsolvable - upperBoundConstant - upperBoundLogStar - upperBoundLog - upperBoundLinear))
 
 if __name__ == "__main__":
   getStatistics()
