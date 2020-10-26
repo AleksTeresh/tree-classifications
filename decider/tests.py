@@ -27,7 +27,7 @@ class TestE2E(unittest.TestCase):
     self.assertEqual(lines[0], "ω(log*n)")
     self.assertEqual(lines[1], "")
 
-  def testLogStarDeciderProblem3(self):
+  def testLogStarDeciderProblem4(self):
     result = subprocess.run(['./log_star_decider.py'], input=b"1M1 010 M11 M01", capture_output=True)
     lines = str(result.stdout.decode('utf-8')).split('\n')
 
@@ -35,7 +35,7 @@ class TestE2E(unittest.TestCase):
     self.assertEqual(lines[0], "O(log*n)")
     self.assertEqual(lines[1], "")
 
-  def testLogStarDeciderProblem4(self):
+  def testLogStarDeciderProblem5(self):
     result = subprocess.run(['./log_star_decider.py'], input=b"121 112 212", capture_output=True)
     lines = str(result.stdout.decode('utf-8')).split('\n')
 
