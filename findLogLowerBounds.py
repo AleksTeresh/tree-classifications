@@ -1,29 +1,17 @@
-import sys
-import json
-from util import getCanonical, flatMap
+from postprocess import postprocess
 
-def findLogLowerBounds():
-  filePath = sys.argv[1]
-  with open(filePath) as json_file:
-    ctr = 0
-    data = json.load(json_file)
-    for idx, problem in enumerate(data):
-      constrs = problem["constraint"]
-      lowerBound = problem["lower-bound"]
+def findLogLowerBounds(problem, idx, data):
+  constrs = problem["constraint"]
+  lowerBound = problem["lower-bound"]
 
-      if lowerBound == "":
-        children = [x[0] + x[2] for x in constrs]
-        if len(children) == len(set(children)): # children uniquely determnine parents
-          ctr += 1
-          print(constrs)
-          data[idx]["lower-bound"] = "Ω(log n)"
-          
+  if lowerBound == "":
+    children = [x[0] + x[2] for x in constrs]
+    if len(children) == len(set(children)): # children uniquely determnine parents
+      print(constrs)
+      data[idx]["lower-bound"] = "Ω(log n)"
+      return 1
 
-        
-  print(ctr)
-  with open(filePath, 'w', encoding='utf-8') as f:
-    json.dump(data, f, ensure_ascii=False, indent=2)
-
+  return 0
 
 if __name__ == "__main__":
-   findLogLowerBounds()
+  postprocess(findLogLowerBounds)
