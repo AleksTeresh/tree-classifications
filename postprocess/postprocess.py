@@ -14,3 +14,5 @@ def postprocessFile(filePath, fn, updateFile):
   if updateFile:
     with open(filePath, 'w', encoding='utf-8') as f:
       json.dump(data, f, ensure_ascii=False, indent=2)
+  
+  return ctr
