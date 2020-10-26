@@ -19,7 +19,7 @@ def getMinimal(problem, idx, data):
         constrs.remove(c)
         if constrs == prevConstrs:
           constrs.add(c)
-          print(constrs, prevConstrs, c, prevProblem["lower-bound"], prevProblem["upper-bound"])
+          print(constrs, prevConstrs, c, prevProblem["lower-bound"], prevProblem["upper-bound"], problem["id"])
           break  
 
         constrs.add(c)
