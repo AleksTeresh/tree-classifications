@@ -4,8 +4,9 @@
 # missing to formally prove
 # - iteratively building the set of equivalent labels by merging two sets is sound
 # todo
-# - print certificate for log*n solvability
+#
 # done
+# - print certificate for log*n solvability
 # - alleviate assumption for reaching every other label
 #   - by constructing a graph (hypergraph or normal with collapsed edges) and separate each strongly connected component
 #       - "fine" as removal of a rule bridging s.c.c. cannot create problems because:
@@ -32,9 +33,13 @@ def is_log_star_solvable(constraints):
             break
     return log_star_solvable
 
+VERBOSE = False
 
 def _is_log_star_solvable(constraints, labels):
     root_labels = [[label] for label in labels]
+
+    if VERBOSE:
+        certificate = dict()
 
     constrains_for_labels = get_constraints_for_labels(constraints, labels)
 
@@ -51,6 +56,8 @@ def _is_log_star_solvable(constraints, labels):
                             break
                 if new_root_labels not in root_labels:
                     root_labels.append(new_root_labels)
+                    if VERBOSE:
+                        certificate[tuple(new_root_labels)] = (tuple(e1),tuple(e2))
                     root_labels_enlarged = True
                     break
             if root_labels_enlarged:
@@ -61,6 +68,8 @@ def _is_log_star_solvable(constraints, labels):
     if labels not in root_labels or not constraints:  # not constraints here for the edge-case of a single label
         return False
     else:
+        if VERBOSE:
+            print(certificate)
         return True
 
 # constraints = input().split()
