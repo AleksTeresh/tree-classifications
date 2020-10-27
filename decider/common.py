@@ -1,4 +1,4 @@
-def constraints_for_labels(constraints,labels):
+def get_constraints_for_labels(constraints,labels):
     constrains_for_label = dict()
     for label in labels:
         constrains_for_label[label] = []

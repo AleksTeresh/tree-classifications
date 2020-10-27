@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-from common import *
-import common
+from .common import get_constraints_for_labels
 
 from math import gcd
 from functools import reduce
@@ -47,7 +46,7 @@ def isFlexible(graph, node):
 
 
 def inflexible_labels(constraints, labels):
-    constraints_for_labels = common.constraints_for_labels(constraints,labels)
+    constraints_for_labels = get_constraints_for_labels(constraints,labels)
     graph = {label: [] for label in labels}
     for label in labels:
         for constraint in constraints_for_labels[label]:
@@ -61,8 +60,7 @@ def inflexible_labels(constraints, labels):
             il.append(label)
     return il
 
-
-def log_decider(constraints):
+def is_log_solvable(constraints):
     labels = list(set("".join(constraints)))
 
     while il := inflexible_labels(constraints, labels):
@@ -72,10 +70,14 @@ def log_decider(constraints):
                 updated_constraints.append(constraint)
         constraints = updated_constraints
         labels = list(set("".join(constraints)))
-    if constraints:  # is not empty
+    
+    return True if constraints else False
+
+def log_decider(constraints):
+    if is_log_solvable(constraints):  # is not empty
         print("O(log n)")
     else:
         print("Ω(n)")
 
-constraints = input().split()
-log_decider(constraints)
+# constraints = input().split()
+# log_decider(constraints)
