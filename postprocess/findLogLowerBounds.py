@@ -8,7 +8,7 @@ def findLogLowerBounds(problem, idx, data):
     children = [x[0] + x[2] for x in constrs]
     if len(children) == len(set(children)): # children uniquely determnine parents
       print(constrs)
-      data[idx]["lower-bound"] = "Ω(log n)"
+      data[idx]["lower-bound"] = "(log n)"
       return 1
 
   return 0

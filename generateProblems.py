@@ -4,7 +4,7 @@ import json
 from util import getCanonical
 
 UNSOLVABLE = "unsolvable"
-CONSTANT = "Θ(1)"
+CONSTANT = "(1)"
 
 def isomorphise1(y):
   if y == '1':

@@ -10,7 +10,7 @@ def findLowerBounds(problem, idx, data):
       prevConstrs = set(prevProblem["constraint"])
       prevLowerBound = prevProblem["lower-bound"]
 
-      if prevLowerBound != "" and prevLowerBound != "O(1)" and prevLowerBound != "Θ(1)" and prevLowerBound != "unsolvable" and constrs.issubset(prevConstrs):
+      if prevLowerBound != "" and prevLowerBound != "(1)" and prevLowerBound != "(1)" and prevLowerBound != "unsolvable" and constrs.issubset(prevConstrs):
         data[idx]["lower-bound"] = prevLowerBound
         print(constrs, prevConstrs, prevLowerBound)
         return 1

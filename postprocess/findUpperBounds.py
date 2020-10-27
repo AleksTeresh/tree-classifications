@@ -10,7 +10,7 @@ def findUpperBounds(problem, idx, data):
       prevConstrs = set(prevProblem["constraint"])
       prevUpperBound = prevProblem["upper-bound"]
 
-      if prevUpperBound != "" and prevUpperBound != "O(n)" and prevUpperBound != "Θ(n)" and prevUpperBound != "unsolvable" and prevConstrs.issubset(constrs):
+      if prevUpperBound != "" and prevUpperBound != "(n)" and prevUpperBound != "(n)" and prevUpperBound != "unsolvable" and prevConstrs.issubset(constrs):
         data[idx]["upper-bound"] = prevUpperBound
         print(constrs, prevUpperBound)
         return 1

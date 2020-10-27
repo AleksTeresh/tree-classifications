@@ -16,7 +16,7 @@ def findLowerBoundsByReplacement(problem, idx, data):
       prevConstrs = set(prevProblem["constraint"])
       prevLowerBound = prevProblem["lower-bound"]
 
-      if prevLowerBound != "" and prevLowerBound != "Θ(1)" and prevConstrs in newConstrs:
+      if prevLowerBound != "" and prevLowerBound != "(1)" and prevConstrs in newConstrs:
         data[idx]["lower-bound"] = prevLowerBound
         print(constrs, prevLowerBound)
         return 1
