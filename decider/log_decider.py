@@ -2,9 +2,6 @@
 
 from common import *
 import common
-constraints = input().split()
-
-labels = list(set("".join(constraints)))
 
 from math import gcd
 from functools import reduce
@@ -65,7 +62,9 @@ def inflexible_labels(constraints, labels):
     return il
 
 
-def log_decider(constraints, labels):
+def log_decider(constraints):
+    labels = list(set("".join(constraints)))
+
     while il := inflexible_labels(constraints, labels):
         updated_constraints = []
         for constraint in constraints:
@@ -78,4 +77,5 @@ def log_decider(constraints, labels):
     else:
         print("Ω(n)")
 
-log_decider(constraints,labels)
+constraints = input().split()
+log_decider(constraints)

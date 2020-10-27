@@ -15,12 +15,7 @@
 from common import *
 import networkx as nx
 
-constraints = input().split()
-
-labels = list(set("".join(constraints)))
-
-
-def is_log_star_solvable(constraints, labels):
+def is_log_star_solvable(constraints):
     G = nx.DiGraph()
     for constraint in constraints:
         G.add_edge(constraint[1], constraint[0])
@@ -68,8 +63,8 @@ def _is_log_star_solvable(constraints, labels):
     else:
         return True
 
-
-if is_log_star_solvable(constraints, labels):
+constraints = input().split()
+if is_log_star_solvable(constraints):
     print("O(log*n)")
 else:
     print("ω(log*n)")
