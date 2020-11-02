@@ -6,33 +6,34 @@
 # todo
 #
 # done
+# - bugfix - removed separation of strongly connected components, fallback to try all subsets of labels
+#   - assumption that log*n solvability of subset of labels implies log*n solvability for the whole strongly connected component is false (212 122 111 - by Aleksandr Tereshchenko)
 # - print certificate for log*n solvability
 # - alleviate assumption for reaching every other label
 #   - by constructing a graph (hypergraph or normal with collapsed edges) and separate each strongly connected component
 #       - "fine" as removal of a rule bridging s.c.c. cannot create problems because:
 #           - either the "pointed" s.c.c. is log*n solvable, then such rule is useless.
 #           - Otherwise, using a rule would force subtree to be ω(log n) solvable, so again useless.
+from itertools import chain, combinations
 
 if __name__ == "__main__":
     from common import get_constraints_for_labels
 else:
     from .common import get_constraints_for_labels
 
-import networkx as nx
+def powerset(iterable):
+    "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
+    s = list(iterable)
+    return chain.from_iterable(combinations(s, r) for r in range(len(s)+1))
 
 def is_log_star_solvable(constraints):
-    G = nx.DiGraph()
-    for constraint in constraints:
-        G.add_edge(constraint[1], constraint[0])
-        G.add_edge(constraint[1], constraint[2])
+    labels = set("".join(constraints))
     log_star_solvable = False
 
-    # split problem/constraints to smaller subproblems such that each small subproblem has a property that every
-    # label can be reached from any other label
-    for scc in nx.strongly_connected_components(G):
+    for reduced_labels in powerset(labels):
         reduced_constraints = [constraint for constraint in constraints if
-                               (constraint[0] in scc and constraint[1] in scc and constraint[2] in scc)]
-        if _is_log_star_solvable(reduced_constraints, list(scc)):
+                               (constraint[0] in reduced_labels and constraint[1] in reduced_labels and constraint[2] in reduced_labels)]
+        if _is_log_star_solvable(reduced_constraints, list(reduced_labels)):
             log_star_solvable = True
             break
     return log_star_solvable
