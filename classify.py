@@ -6,11 +6,21 @@ from postprocess.findLowerBoundsByReplacement import findLowerBoundsByReplacemen
 from postprocess.findSolvable import findSolvableByCyclePathClassifier
 from postprocess.findUpperBounds import findUpperBounds
 from postprocess.findRootOnlyParents import findRootOnlyParents
+from postprocess.findByExpDecider import findByExpDecider
+from postprocess.findContradictionsByDecider import findContradictionsByDecider
 
 def classify():
   updateCtr = 1
   while updateCtr != 0:
     updateCtr = 0
+
+    # print("Problems that contradict Jan's exponential algorithm")  
+    # updateCtr += doPostprocess(findContradictionsByDecider)
+    # print()
+
+    # print("Problems decidable by Jan's exponential algorithm")
+    # updateCtr += doPostprocess(findByExpDecider)
+    # print()
 
     print("Problems where 3 can only be at the root")
     updateCtr += doPostprocess(findRootOnlyParents)
