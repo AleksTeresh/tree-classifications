@@ -13,7 +13,11 @@
 #           - either the "pointed" s.c.c. is log*n solvable, then such rule is useless.
 #           - Otherwise, using a rule would force subtree to be ω(log n) solvable, so again useless.
 
-from .common import get_constraints_for_labels
+if __name__ == "__main__":
+    from common import get_constraints_for_labels
+else:
+    from .common import get_constraints_for_labels
+
 import networkx as nx
 
 def is_log_star_solvable(constraints):
@@ -72,8 +76,9 @@ def _is_log_star_solvable(constraints, labels):
             print(certificate)
         return True
 
-# constraints = input().split()
-# if is_log_star_solvable(constraints):
-#     print("O(log*n)")
-# else:
-#     print("ω(log*n)")
+if __name__ == "__main__":
+    constraints = input().split()
+    if is_log_star_solvable(constraints):
+        print("O(log*n)")
+    else:
+        print("ω(log*n)")

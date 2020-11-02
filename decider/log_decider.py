@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
-from .common import get_constraints_for_labels
+if __name__ == "__main__":
+    from common import get_constraints_for_labels
+else:
+    from .common import get_constraints_for_labels
 
 from math import gcd
 from functools import reduce
@@ -79,5 +82,6 @@ def log_decider(constraints):
     else:
         print("Ω(n)")
 
-# constraints = input().split()
-# log_decider(constraints)
+if __name__ == "__main__":
+    constraints = input().split()
+    log_decider(constraints)
