@@ -56,7 +56,6 @@ def getIsomorphism(constrSet, colorCount):
       set(map(canonize(isomorphise5), constrSet)),
     ]
 
-
 def pruneSet(constrSet):
   parentLabelSet = set(map(lambda x: x[1], constrSet))
   return set(filter(lambda x: set(x) <= parentLabelSet, constrSet))

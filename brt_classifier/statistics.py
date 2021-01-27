@@ -1,6 +1,6 @@
 import json
 
-def getStatistics(filePath):
+def printStatistics(filePath):
   with open(filePath) as json_file:
     data = json.load(json_file)
 
