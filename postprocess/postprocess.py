@@ -1,7 +1,7 @@
 import json, sys
 
 def postprocess(fn):
-  return postprocessFile(sys.argv[1], fn, True if len(sys.argv) > 2 and (sys.argv[2] == "write" or sys.argv[2] == "w") else False)
+  return postprocessFile(sys.argv[1], fn, True if len(sys.argv) > 2 and (sys.argv[2] == "--write" or sys.argv[2] == "-w") else False)
 
 def postprocessFile(filePath, fn, updateFile):
   ctr = 0
