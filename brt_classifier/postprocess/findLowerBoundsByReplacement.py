@@ -1,5 +1,4 @@
-from util import getCanonical
-from postprocess import postprocess
+from ..util import getCanonical
 
 def findLowerBoundsByReplacement(problem, idx, data):
   constrs = problem["constraint"]

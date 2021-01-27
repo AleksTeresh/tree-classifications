@@ -1,5 +1,3 @@
-from postprocess import postprocess
-
 def findLowerBounds(problem, idx, data):
   constrs = set(problem["constraint"])
   lowerBound = problem["lower-bound"]

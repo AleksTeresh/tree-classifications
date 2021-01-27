@@ -1,7 +1,5 @@
-import sys
-import itertools
-import json
-from util import getCanonical
+import sys, itertools, json, os
+from .util import getCanonical
 
 UNSOLVABLE = "unsolvable"
 CONSTANT = "(1)"
@@ -85,8 +83,7 @@ def getConstraints(colorCount):
   prod = list(itertools.product(colorPalete, repeat=3))
   return [getCanonical("".join(list(x))) for i, x in enumerate(prod) if not getCanonical(x) in prod[:i]]
 
-def generate():
-  colorCount = int(sys.argv[1])
+def generate(colorCount):
   constraints = getConstraints(colorCount)
 
   allSets = []
@@ -112,8 +109,5 @@ def generate():
   print("Unsolvable: %s" % len([x for x in allProblems if x["upper-bound"] == UNSOLVABLE]))
   print("TBD: %s" % len([x for x in allProblems if x["upper-bound"] == ""]))
   
-  with open('./problems/problems-temp.json', 'w', encoding='utf-8') as f:
+  with open(os.path.dirname(os.path.realpath(__file__)) + '/problems/problems-temp.json', 'w+', encoding='utf-8') as f:
     json.dump(allProblems, f, ensure_ascii=False, indent=2)
-
-if __name__ == "__main__":
-   generate()

@@ -1,8 +1,6 @@
-import sys, json
+import json
 
-def getStatistics():
-  filePath = sys.argv[1]
-
+def getStatistics(filePath):
   with open(filePath) as json_file:
     data = json.load(json_file)
 
@@ -98,6 +96,3 @@ def getStatistics():
     print("Log time: %s " % upperBoundLog)
     print("Linear time: %s " % upperBoundLinear)
     print("TBD: %s" % (totalSize - unsolvable - upperBoundConstant - upperBoundLogStar - upperBoundLoglog - upperBoundLog - upperBoundLinear))
-
-if __name__ == "__main__":
-  getStatistics()

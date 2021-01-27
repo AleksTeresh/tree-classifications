@@ -1,5 +1,4 @@
-from util import getCanonical, flatMap
-from postprocess import postprocess
+from ..util import getCanonical, flatMap
 
 def findSolvableByCyclePathClassifier(problem, idx, data):
   problemId = problem["id"]

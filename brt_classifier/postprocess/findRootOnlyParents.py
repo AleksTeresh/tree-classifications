@@ -1,5 +1,4 @@
-from postprocess import postprocess
-from util import flatMap
+from ..util import flatMap
 
 def findRootOnlyParents(problem, idx, data):
   constrs = problem["constraint"]
