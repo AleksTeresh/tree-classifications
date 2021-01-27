@@ -1,5 +1,4 @@
-from decider.log_decider import is_log_solvable
-from decider.log_star_decider import is_log_star_solvable
+from rooted_tree_classifier import is_log_solvable, is_log_star_solvable
 from util import complexities
 
 def findContradictionsByDecider(problem, idx, data):
