@@ -13,8 +13,8 @@ def findByExpDecider(problem, idx, data):
 
     if is_log_star_solvable(constraints):
       decidedUpperBound = complexities[min(complexities.index(decidedUpperBound) if decidedUpperBound != "" else 100, complexities.index("(log* n)"))]
-    # else:
-      # decidedLowerBound = complexities[max(complexities.index(decidedLowerBound) if decidedLowerBound != "" else -1, complexities.index("(log n)"))]
+    else:
+      decidedLowerBound = complexities[max(complexities.index(decidedLowerBound) if decidedLowerBound != "" else -1, complexities.index("(log n)"))]
 
     if is_log_solvable(constraints):
       decidedUpperBound = complexities[min(complexities.index(decidedUpperBound) if decidedUpperBound != "" else 100, complexities.index("(log n)"))]
