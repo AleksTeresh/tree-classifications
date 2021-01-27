@@ -7,8 +7,6 @@ def findContradictionsByDecider(problem, idx, data):
   upperBound = problem["upper-bound"]
 
   if upperBound != "unsolvable" or lowerBound != "unsolvable":
-    # decidedUpperBound = upperBound
-    # decidedLowerBound = lowerBound
 
     if is_log_star_solvable(constraints) and lowerBound != "" and complexities.index(lowerBound) > complexities.index("(log* n)"):
       print(constraints, "lower-bound", lowerBound, "but log* solvable")
