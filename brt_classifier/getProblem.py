@@ -10,7 +10,15 @@ def loadAndScanProblems(json_file, constraints, colorCount):
   for problem in data:
     if set(problem['constraint']) in ismrs:
       return problem
-  raise Exception('The problem could not be found')
+
+  return {
+    "constraint": sorted(list(canonicalConstrSet)),
+    "upper-bound": 'unsolvable',
+    "lower-bound": 'unsolvable',
+    "unsolvable-count": "",
+    "solvable-count": "",
+    "id": -1
+  }
 
 def getProblem(constraints):
   alphabet = set(flatMap(lambda x: x, list(constraints)))
