@@ -2,6 +2,38 @@
 
 This repository contains classifications of some of the problems on rooted binary trees.
 
+## Usage
+
+**To generage a new problem file:**
+
+```
+python -m brt_classifier generate <label-count>
+```
+
+where "label-count" is 2 or 3 will generate `problems/problems-temp.json` that contains all non-isomorphic, non-redundant problems. Moreover, it will classify some of those problems that can be automatically classified.
+
+**To classify problems** in e.g. file `problems/3labels.json`:
+
+```
+python -m brt_classifier classify problems/3labels.json
+```
+
+Add a flag `-w` at the end, if you want the classification result's changes to persist
+
+**To find out problems's complexity** e.g. for problem {121, 212}:
+
+```
+python -m brt_classifier find 121 212
+```
+
+Change the constraints at the end of the command to search for a different problem.
+
+**To print statistics on a problem file** e.g. file `problems/3labels.json`:
+
+```
+python -m brt_classifier statistics problems/3labels.json
+```
+
 ## Notation
 
 _The following notation explanation is about 2-label setting, but can be trivially extended to a setting with > 2 labels_
@@ -16,44 +48,6 @@ Besides, we also reduce the number of problems by eliminating redundant constrai
 
 ### 2 labels
 
-There are:
-
-**30 non-isomorphic problems**
-
-- 26 constant-time solvable
-
-- 1 log-time solvable
-
-- 1 linear-time solvable
-
-- 1 unsolvable, which is {} i.e. empty set of allowed configurations
-
-- **1 unclassified (!)** The only unclassified problem is {121, 112, 212}.
-
-All but 1 non-isomorphic problems with 2 labels have been classified. Classification results can be found [here](https://github.com/AleksTeresh/tree-classifications/blob/master/problems/2labels.json).
-
 Most of the problems were rather trivial to classify. Lower and upper bound justifications for a not-so-trivial problem {121, 112} can be found here in [the docs folder](https://github.com/AleksTeresh/tree-classifications/tree/master/docs).
 
-{121, 212} was classified using [cycle-path classifier command-line tool](https://github.com/AleksTeresh/cyclepath-classifier) (it's round complexity is Θ(n)).
-
 {112, 122} is O(1)-time solvable: each node simply tells one of its children "you will be 1" and the other one "you will be 2". Since {112, 122} is O(1)-time solvable then any problems that are relaxations of it are O(1)-time solvable too. Thus, {112, 212, 122} and {121, 112, 212, 122} were classified as O(1) solvable too.
-
-### 3 labels
-
-In total: 42198 problems
-
-Solvable in constant time: 39538
-
-Unsolvable: 1
-
-TBD: 2659
-
-## Scripts
-
-Running the following command:
-
-```
-python ./problems.py <label-count>
-```
-
-where "label-count" is 2 or 3 will generate `problems/problems-temp.json` that contains all non-isomorphic, non-redundant problems. Moreover, it will classify some of those problems that can be automatically classified.
