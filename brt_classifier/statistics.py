@@ -30,42 +30,42 @@ def printStatistics(filePath):
       lowerBound = p["lower-bound"]
       upperBound = p["upper-bound"]
 
-      if "1" in lowerBound:
+      if lowerBound == "(1)":
         lowerBoundConstant += 1
-      if "1" in upperBound:
+      if upperBound == "(1)":
         upperBoundConstant += 1
-      if "1" in lowerBound and "1" in upperBound:
+      if lowerBound == "(1)" and upperBound == "(1)":
         constSolvable += 1
 
-      if "log*" in lowerBound:
+      if lowerBound == "(log* n)":
         lowerBoundLogStar += 1
-      if "log*" in upperBound:
+      if upperBound == "(log* n)":
         upperBoundLogStar += 1
-      if "log*" in lowerBound and "log*" in upperBound:
+      if lowerBound == "(log* n)" and upperBound == "(log* n)":
         logStarSolvable += 1
 
-      if "loglog n" in lowerBound:
+      if lowerBound == "(loglog n)":
         lowerBoundLoglog += 1
-      if "loglog n" in upperBound:
+      if upperBound == "(loglog n)":
         upperBoundLoglog += 1
-      if "loglog n" in lowerBound and "loglog n" in upperBound:
+      if lowerBound == "(loglog n)" and upperBound == "(loglog n)":
         loglogSolvable += 1
 
-      if "log n" in lowerBound:
+      if lowerBound == "(log n)":
         lowerBoundLog += 1
-      if "log n" in upperBound:
+      if upperBound == "(log n)":
         upperBoundLog += 1
-      if "log n" in lowerBound and "log n" in upperBound:
+      if lowerBound == "(log n)" and upperBound == "(log n)":
         logSolvable += 1
 
-      if "(n)" in lowerBound:
+      if lowerBound == "(n)":
         lowerBoundLinear += 1
-      if "(n)" in upperBound:
+      if upperBound == "(n)":
         upperBoundLinear += 1
-      if "(n)" in lowerBound and "(n)" in upperBound:
+      if lowerBound == "(n)" and upperBound == "(n)":
         linearSolvable += 1
 
-      if "unsolvable" in lowerBound:
+      if lowerBound == "unsolvable":
         unsolvable += 1
 
     totalSize = len(data)
