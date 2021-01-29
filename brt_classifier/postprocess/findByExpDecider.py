@@ -1,5 +1,5 @@
 from rooted_tree_classifier import is_log_solvable, is_log_star_solvable
-from ..util import complexities
+from ..complexity import complexities
 
 def findByExpDecider(problem, idx, data):
   constraints = set(problem["constraint"])
