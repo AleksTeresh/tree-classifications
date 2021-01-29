@@ -1,8 +1,6 @@
 import sys, itertools, json, os
 from .util import getCanonical
-
-UNSOLVABLE = "unsolvable"
-CONSTANT = "(1)"
+from .complexity import *
 
 def isomorphise1(y):
   if y == '1':
@@ -66,7 +64,7 @@ def constraintToProblem(constrSet, idx):
   elif len(constrSet) == 0:
     complexity = UNSOLVABLE
   else:
-    complexity = ""
+    complexity = UNKNOWN
 
   return {
     "constraint": sorted(list(constrSet)),

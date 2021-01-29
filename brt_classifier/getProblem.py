@@ -1,6 +1,7 @@
 import os, json
 from .util import flatMap, getCanonical
 from .generateProblems import getIsomorphism
+from .complexity import UNSOLVABLE
 
 def loadAndScanProblems(json_file, constraints, colorCount):
   data = json.load(json_file)
@@ -13,8 +14,8 @@ def loadAndScanProblems(json_file, constraints, colorCount):
 
   return {
     "constraint": sorted(list(canonicalConstrSet)),
-    "upper-bound": 'unsolvable',
-    "lower-bound": 'unsolvable',
+    "upper-bound": UNSOLVABLE,
+    "lower-bound": UNSOLVABLE,
     "unsolvable-count": "",
     "solvable-count": "",
     "id": -1

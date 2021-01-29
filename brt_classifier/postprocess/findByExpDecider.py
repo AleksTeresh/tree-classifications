@@ -1,24 +1,25 @@
 from rooted_tree_classifier import is_log_solvable, is_log_star_solvable
 from ..complexity import complexities
+from ..complexity import *
 
 def findByExpDecider(problem, idx, data):
   constraints = set(problem["constraint"])
   lowerBound = problem["lower-bound"]
   upperBound = problem["upper-bound"]
 
-  if upperBound == "" or lowerBound == "":
+  if upperBound == UNKNOWN or lowerBound == UNKNOWN:
     decidedUpperBound = upperBound
     decidedLowerBound = lowerBound
 
     if is_log_star_solvable(constraints):
-      decidedUpperBound = complexities[min(complexities.index(decidedUpperBound) if decidedUpperBound != "" else 100, complexities.index("(log* n)"))]
+      decidedUpperBound = complexities[min(complexities.index(decidedUpperBound) if decidedUpperBound != UNKNOWN else 100, complexities.index(ITERATED_LOG))]
     else:
-      decidedLowerBound = complexities[max(complexities.index(decidedLowerBound) if decidedLowerBound != "" else -1, complexities.index("(loglog n)"))]
+      decidedLowerBound = complexities[max(complexities.index(decidedLowerBound) if decidedLowerBound != UNKNOWN else -1, complexities.index(LOGLOG))]
 
     if is_log_solvable(constraints):
-      decidedUpperBound = complexities[min(complexities.index(decidedUpperBound) if decidedUpperBound != "" else 100, complexities.index("(log n)"))]
+      decidedUpperBound = complexities[min(complexities.index(decidedUpperBound) if decidedUpperBound != UNKNOWN else 100, complexities.index(LOG))]
     else:
-      decidedLowerBound = complexities[max(complexities.index(decidedLowerBound) if decidedLowerBound != "" else -1, complexities.index("(n)"))]
+      decidedLowerBound = complexities[max(complexities.index(decidedLowerBound) if decidedLowerBound != UNKNOWN else -1, complexities.index(GLOBAL))]
 
     if (lowerBound != decidedLowerBound or upperBound != decidedUpperBound):
       data[idx]["lower-bound"] = decidedLowerBound

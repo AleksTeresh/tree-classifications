@@ -1,4 +1,5 @@
 import json
+from .complexity import *
 
 def printStatistics(filePath):
   with open(filePath) as json_file:
@@ -30,42 +31,42 @@ def printStatistics(filePath):
       lowerBound = p["lower-bound"]
       upperBound = p["upper-bound"]
 
-      if lowerBound == "(1)":
+      if lowerBound == CONST:
         lowerBoundConstant += 1
-      if upperBound == "(1)":
+      if upperBound == CONST:
         upperBoundConstant += 1
-      if lowerBound == "(1)" and upperBound == "(1)":
+      if lowerBound == CONST and upperBound == CONST:
         constSolvable += 1
 
-      if lowerBound == "(log* n)":
+      if lowerBound == ITERATED_LOG:
         lowerBoundLogStar += 1
-      if upperBound == "(log* n)":
+      if upperBound == ITERATED_LOG:
         upperBoundLogStar += 1
-      if lowerBound == "(log* n)" and upperBound == "(log* n)":
+      if lowerBound == ITERATED_LOG and upperBound == ITERATED_LOG:
         logStarSolvable += 1
 
-      if lowerBound == "(loglog n)":
+      if lowerBound == LOGLOG:
         lowerBoundLoglog += 1
-      if upperBound == "(loglog n)":
+      if upperBound == LOGLOG:
         upperBoundLoglog += 1
-      if lowerBound == "(loglog n)" and upperBound == "(loglog n)":
+      if lowerBound == LOGLOG and upperBound == LOGLOG:
         loglogSolvable += 1
 
-      if lowerBound == "(log n)":
+      if lowerBound == LOG:
         lowerBoundLog += 1
-      if upperBound == "(log n)":
+      if upperBound == LOG:
         upperBoundLog += 1
-      if lowerBound == "(log n)" and upperBound == "(log n)":
+      if lowerBound == LOG and upperBound == LOG:
         logSolvable += 1
 
-      if lowerBound == "(n)":
+      if lowerBound == GLOBAL:
         lowerBoundLinear += 1
-      if upperBound == "(n)":
+      if upperBound == GLOBAL:
         upperBoundLinear += 1
-      if lowerBound == "(n)" and upperBound == "(n)":
+      if lowerBound == GLOBAL and upperBound == GLOBAL:
         linearSolvable += 1
 
-      if lowerBound == "unsolvable":
+      if lowerBound == UNSOLVABLE:
         unsolvable += 1
 
     totalSize = len(data)

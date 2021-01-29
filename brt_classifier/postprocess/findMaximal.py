@@ -1,9 +1,11 @@
+from ..complexity import *
+
 def getMaximal(problem, idx, data):
   constrs = set(problem["constraint"])
   lowerBound = problem["lower-bound"]
   upperBound = problem["upper-bound"]
 
-  if lowerBound != "" and upperBound != "":
+  if lowerBound != UNKNOWN and upperBound != UNKNOWN:
     return 0
 
   prevProblems = data[idx+1:]
@@ -12,7 +14,7 @@ def getMaximal(problem, idx, data):
     prevLowerBound = prevProblem["lower-bound"]
     prevUpperBound = prevProblem["upper-bound"]
 
-    if prevLowerBound != "" and prevUpperBound != "":
+    if prevLowerBound != UNKNOWN and prevUpperBound != UNKNOWN:
       for c in prevConstrs:
         prevConstrs.remove(c)
         if constrs == prevConstrs and c != c[0] * len(c):

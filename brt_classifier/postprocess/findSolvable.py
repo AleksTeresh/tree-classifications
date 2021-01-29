@@ -1,4 +1,5 @@
 from ..util import getCanonical, flatMap
+from ..complexity import *
 
 def findSolvableByCyclePathClassifier(problem, idx, data):
   problemId = problem["id"]
@@ -6,7 +7,7 @@ def findSolvableByCyclePathClassifier(problem, idx, data):
   lowerBound = problem["lower-bound"]
   upperBound = problem["upper-bound"]
 
-  if lowerBound != "" and upperBound != "":
+  if lowerBound != UNKNOWN and upperBound != UNKNOWN:
     return 0
 
   # TODO: refactor the mess below

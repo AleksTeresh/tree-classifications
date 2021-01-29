@@ -1,11 +1,12 @@
 from ..util import flatMap
+from ..complexity import *
 
 def findRootOnlyParents(problem, idx, data):
   constrs = problem["constraint"]
   lowerBound = problem["lower-bound"]
   upperBound = problem["upper-bound"]
 
-  if lowerBound == "" or upperBound == "":
+  if lowerBound == UNKNOWN or upperBound == UNKNOWN:
     parents = set([x[1] for x in constrs])
     children = set(flatMap(lambda x: [x[0], x[2]], constrs))
     if not parents.issubset(children):
