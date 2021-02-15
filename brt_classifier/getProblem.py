@@ -6,7 +6,6 @@ from .complexity import UNSOLVABLE
 def loadAndScanProblems(json_file, constraints, colorCount):
   data = json.load(json_file)
   canonicalConstrSet = {getCanonical(x) for x in constraints}
-  print(canonicalConstrSet)
   ismrs = getIsomorphism(set(canonicalConstrSet), colorCount)
   for problem in data:
     if set(problem['constraint']) in ismrs:
