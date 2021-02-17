@@ -1,11 +1,11 @@
 import os, json
 from .util import flatMap, getCanonical
-from .generateProblems import getIsomorphism
+from .generateProblems import getIsomorphism, pruneSet
 from .complexity import UNSOLVABLE
 
 def loadAndScanProblems(json_file, constraints, colorCount):
   data = json.load(json_file)
-  canonicalConstrSet = {getCanonical(x) for x in constraints}
+  canonicalConstrSet = pruneSet({getCanonical(x) for x in constraints})
   ismrs = getIsomorphism(set(canonicalConstrSet), colorCount)
   for problem in data:
     if set(problem['constraint']) in ismrs:
