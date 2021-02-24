@@ -2,7 +2,7 @@ import sys
 from .classify import classify
 from .generateProblems import generate
 from .statistics import printStatistics
-from .getProblem import getProblem
+from .getProblem import getProblem, getProblems
 
 if __name__ == "__main__":
   command = sys.argv[1]
