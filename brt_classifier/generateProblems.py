@@ -42,7 +42,7 @@ def canonize(isomorphize):
   return lambda x: getCanonical("".join(list(map(isomorphize, x))))
 
 def getIsomorphism(constrSet, colorCount):
-  if colorCount == 2:
+  if colorCount <= 2:
     return [constrSet, set(map(canonize(isomorphise1), constrSet))]
   elif colorCount == 3:
     return [

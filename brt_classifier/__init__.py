@@ -1,8 +1,8 @@
 from .classify import classify
 from .generateProblems import generate
 from .statistics import printStatistics
-from .getProblem import getProblem
+from .getProblem import getProblem, getProblems
 from .complexity import *
 
 # Package version
-__version__ = '0.1.9'
+__version__ = '0.1.14'

@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="brt-classifier",
-    version="0.1.9",
+    version="0.1.14",
     description="A command-line tool for automatically classifying binary and ternary labelling problems on bipartite rooted trees (hence BRT).",
     long_description=README,
     long_description_content_type="text/markdown",

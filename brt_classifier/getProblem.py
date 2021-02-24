@@ -10,8 +10,10 @@ def loadAndScanProblems(json_file, constraints, colorCount):
   for _ in range(colorCount-1):
     canonicalConstrSet = pruneSet(canonicalConstrSet)
   ismrs = getIsomorphism(set(canonicalConstrSet), colorCount)
+  # print(ismrs)
   for problem in data:
     if set(problem['constraint']) in ismrs:
+      # print(set(problem['constraint']), problem['id'])
       return problem
 
   return {
@@ -45,14 +47,12 @@ def findProblem(data, constraints, colorCount):
 
 def loadAndBatchScan(json_file, constraintsList, colorCount):
   data = json.load(json_file)
-  data = {tuple(d['constraint']): d for d in data}
+  data = {tuple(sorted(d['constraint'])): d for d in data}
   return [findProblem(data, c, colorCount) for c in tqdm(constraintsList)]
 
-def getProblems(constraintsList):
-  representativeC = constraintsList[0]
-  alphabet = set(flatMap(lambda x: x, list(representativeC)))
-  labelCount = len(alphabet)
-  if labelCount == 2:
+def getProblems(constraintsList, labelCount):
+  print(len(constraintsList))
+  if labelCount <= 2:
     with open(os.path.dirname(os.path.realpath(__file__)) + '/problems/2labels.json') as json_file:
       return loadAndBatchScan(json_file, constraintsList, labelCount)
   elif labelCount == 3:
@@ -71,7 +71,7 @@ def getProblem(constraints):
   alphabet = set(flatMap(lambda x: x, list(constraints)))
   labelCount = len(alphabet)
 
-  if labelCount == 2:
+  if labelCount <= 2:
     with open(os.path.dirname(os.path.realpath(__file__)) + '/problems/2labels.json') as json_file:
       return loadAndScanProblems(json_file, constraints, labelCount)
   elif labelCount == 3:
